@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notices</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:20px;
+font-size:24px;
+background:linear-gradient(90deg,#ef4444,#f87171);
+}
+
+/* CONTAINER */
+.container{
+width:95%;
+max-width:1100px;
+margin:auto;
+}
+
+/* SEARCH */
+.search{
+margin:20px 0;
+}
+
+.search input{
+width:100%;
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+/* NOTICE CARD */
+.notice{
+background:#1e293b;
+border-left:5px solid #ef4444;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.notice:hover{
+transform:translateX(5px);
+background:#334155;
+}
+
+/* TITLE */
+.notice h3{
+font-size:18px;
+margin-bottom:5px;
+}
+
+/* DATE */
+.date{
+font-size:12px;
+color:#cbd5e1;
+margin-bottom:8px;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+padding:8px 12px;
+background:#ef4444;
+color:white;
+border-radius:6px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#dc2626;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+header{font-size:20px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>📢 Latest Notices</header>
+
+<div class="container">
+
+<!-- SEARCH -->
+<div class="search">
+<input type="text" id="search" placeholder="Search notices..." onkeyup="searchNotice()">
+</div>
+
+<!-- NOTICE LIST -->
+<div id="noticeList"></div>
+
+</div>
+
+<script>
+
+/* 🔥 APNE NOTICE YAHAN ADD KARO */
+let notices = [
+{
+title:"Library Closed Notice",
+date:"10 April 2026",
+desc:"Library will remain closed on Sunday.",
+link:"#"
+},
+{
+title:"New Books Available",
+date:"8 April 2026",
+desc:"New competitive exam books added.",
+link:"#"
+},
+{
+title:"Exam Registration Open",
+date:"5 April 2026",
+desc:"Dr. Ambedkar Jayanti exam registration started.",
+link:"#"
+},
+{
+title:"Timing Changed",
+date:"2 April 2026",
+desc:"Library timing updated from 8 AM to 10 PM.",
+link:"#"
+}
+];
+
+/* DISPLAY */
+function showNotices(data=notices){
+let list=document.getElementById("noticeList");
+list.innerHTML="";
+
+data.forEach(n=>{
+list.innerHTML+=`
+<div class="notice">
+<h3>${n.title}</h3>
+<div class="date">${n.date}</div>
+<p>${n.desc}</p>
+<br>
+<a href="${n.link}" class="btn">View</a>
+</div>
+`;
+});
+}
+
+/* SEARCH */
+function searchNotice(){
+let val=document.getElementById("search").value.toLowerCase();
+
+let filtered=notices.filter(n =>
+n.title.toLowerCase().includes(val)
+);
+
+showNotices(filtered);
+}
+
+showNotices();
+
+</script>
+
+</body>
+</html>

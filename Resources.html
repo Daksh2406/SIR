@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:20px;
+font-size:24px;
+background:linear-gradient(90deg,#22c55e,#4ade80);
+}
+
+/* CONTAINER */
+.container{
+width:95%;
+max-width:1200px;
+margin:auto;
+}
+
+/* SEARCH */
+.search{
+margin:20px 0;
+}
+
+.search input{
+width:100%;
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:#1e293b;
+border-radius:15px;
+padding:15px;
+transition:0.3s;
+border:2px solid transparent;
+}
+
+.card:hover{
+border:2px solid #4ade80;
+transform:translateY(-6px);
+}
+
+/* ICON */
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* CONTENT */
+.card h3{
+font-size:18px;
+margin-bottom:5px;
+}
+
+.card p{
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:10px;
+}
+
+/* BUTTON */
+.btn{
+display:block;
+text-align:center;
+padding:10px;
+border-radius:8px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#16a34a;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+header{font-size:20px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>📚 Study Resources</header>
+
+<div class="container">
+
+<!-- SEARCH -->
+<div class="search">
+<input type="text" id="search" placeholder="Search resources..." onkeyup="searchRes()">
+</div>
+
+<!-- GRID -->
+<div class="grid" id="resGrid"></div>
+
+</div>
+
+<script>
+
+/* 🔥 APNE RESOURCES YAHAN ADD KARO */
+let resources = [
+{
+title:"SSC Notes PDF",
+desc:"Complete SSC preparation notes",
+type:"📄",
+link:"files/ssc.pdf"
+},
+{
+title:"UPSC Study Material",
+desc:"Important UPSC notes",
+type:"📘",
+link:"files/upsc.pdf"
+},
+{
+title:"Math Video Class",
+desc:"Basic math full course",
+type:"🎥",
+link:"https://youtube.com"
+},
+{
+title:"Reasoning Tricks",
+desc:"Shortcut tricks PDF",
+type:"📑",
+link:"files/reasoning.pdf"
+}
+];
+
+/* DISPLAY */
+function showRes(data=resources){
+let grid=document.getElementById("resGrid");
+grid.innerHTML="";
+
+data.forEach(r=>{
+grid.innerHTML+=`
+<div class="card">
+<div class="icon">${r.type}</div>
+<h3>${r.title}</h3>
+<p>${r.desc}</p>
+<a href="${r.link}" target="_blank" class="btn">Open / Download</a>
+</div>
+`;
+});
+}
+
+/* SEARCH */
+function searchRes(){
+let val=document.getElementById("search").value.toLowerCase();
+
+let filtered=resources.filter(r =>
+r.title.toLowerCase().includes(val)
+);
+
+showRes(filtered);
+}
+
+showRes();
+
+</script>
+
+</body>
+</html>

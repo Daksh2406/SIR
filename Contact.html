@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:20px;
+font-size:24px;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+}
+
+/* CONTAINER */
+.container{
+width:95%;
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+padding:20px 0;
+}
+
+/* BOX */
+.box{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+/* INFO */
+.info p{
+margin:10px 0;
+color:#cbd5e1;
+}
+
+/* MAP */
+.map iframe{
+width:100%;
+height:250px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* FORM */
+form input, form textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:none;
+}
+
+form textarea{
+resize:none;
+height:100px;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
+background:#06b6d4;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+/* SUCCESS */
+.success{
+display:none;
+margin-top:10px;
+color:#22c55e;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.container{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>📞 Contact Us</header>
+
+<div class="container">
+
+<!-- INFO + MAP -->
+<div class="box info">
+<h2>Get in Touch</h2>
+
+<p>📍 Sir Ambedkar Library, Abdullahpur, Meerut</p>
+<p>📞 +91 9876543210</p>
+<p>📧 ambedkarlibrary@gmail.com</p>
+<p>🕒 Timing: 8 AM - 10 PM</p>
+
+<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3830.6164095025383!2d77.76530107575503!3d28.992875167625613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390c7b21d4577201%3A0xfefe607ed5093ac1!2sSir%20ambedkar%20library!5e1!3m2!1sen!2sin!4v1775778844246!5m2!1sen!2sin"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+</div>
+
+</div>
+
+<!-- FORM -->
+<div class="box">
+<h2>Send Message</h2>
+
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<input type="text" id="subject" placeholder="Subject" required>
+<textarea id="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+</form>
+
+<div class="success" id="successMsg">✅ Message Sent Successfully!</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let subject=document.getElementById("subject").value;
+let message=document.getElementById("message").value;
+
+if(name==="" || email==="" || subject==="" || message===""){
+alert("Please fill all fields");
+return;
+}
+
+document.getElementById("successMsg").style.display="block";
+this.reset();
+});
+
+</script>
+
+</body>
+</html>
